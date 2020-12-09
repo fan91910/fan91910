@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>注册页面</h1>   
+账号 <input type="text" name="uname" id=""> <br>
+密码 <input type="text" name="upwd" id=""> <br>
+<input type="submit" value="提交">
+
+<script>
+    var d1 = document.getElementById('d1');
+    function toreg(){
+        var uname = document.getElementById('uname');
+        var upwd = document.getElementById('upwd');
+
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState==4 && xhr.status==200){
+                console.log(r);
+                if(r==1){
+                    d1.innerHTML='注册成功';
+                }else{
+                 d1.innerHTML='注册失败';
+                }
+            }
+        }
+        xhr.open('post','/user/reg',true);
+        
+        xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+        var userdata = `uname=${uname.value}$upwd=${upwd.value}`;
+        xhr.send(userdata);
+    }
+</script>
+
+
+
+</body>
+</html>
