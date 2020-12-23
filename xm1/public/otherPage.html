@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script src="http://www.jq22.com/jquery/vue.min.js"></script>
+<link rel="stylesheet" href="./boot/css/bootstrap.css">
+<script src="./boot/js/jquery.min.js"></script>
+<script src="./boot/js/popper.min.js"></script>
+<script src="./boot/js/bootstrap.min.js"></script>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    /* div{
+        border: 1px solid red;
+    } */
+    div img{
+        width: 20px;
+    }
+    ul li{  
+        float: left;
+        list-style: none;
+    }
+    #right{
+        float: left;
+        position: absolute;
+        margin-right: 90px;
+    }
+    a{
+        color: #000;
+        text-decoration: none;
+    }
+</style>
+</head>
+<body>
+    <div class="container border">
+        <!-- 头部 -->
+        <div class="col row">
+            <div class="col-1"><img src="./img/首页.png" alt="" onclick="toIndex()"></div>
+            <div class="col-8"><input type="text" class="form-control" style="display: inline; width: 50%;"><img src="./img/搜索.png" alt=""></div>
+        </div>
+        <!-- 主体 -->
+    <div class="col row">
+        <div class="col-9 row">
+           
+            <div class="col-12"><h4>赛博朋克2077</h4></div>
+            <div class="col-12 border row" style="height: 500px;">
+                <div class="col-12"><img src="./img/赛博朋克.png" style="width: 100%;height: 280px; margin: 30px 0px;" alt=""></div>
+                <div class="col-12">《赛博朋克2077》剧情发生在腐败和高科技并存的2077年未来世界，玩家将可以在游戏中体验到细腻的未来夜城景色以及多线剧情。在CG中，我们将看到刀枪不入的美女机器人、造型奇特的武装特警以及最后出现的头戴式设备，这些不同的设定无不暗示我们这可能是发生在未来虚拟网络世界的故事。</div>
+            </div>
+            <div class="col-12">
+                <img id="dz" onclick="a('dz','./img/已赞.png','./img/点赞.png')" src="./img/点赞.png" alt="">
+                <img id='sc' onclick="a('sc','./img/已收藏 .png','./img/收藏.png')" src="./img/收藏.png" alt="">
+            <a href=""><img src="./img/转发.png" alt=""></a>
+            <a href="" id="Right">举报</a>
+            </div>
+            <div class="col-12" >
+                <div id="app">
+                    <cmt-box @func="loadComments"></cmt-box>
+                     <ul class="list-group">
+                         <li class="list-group-item" v-for="item in list" :key="item.id">
+                             <span class="badge">评论：{{item.user}}</span>
+                             {{item.content}}
+                         </li>
+                     </ul>
+                 </div>
+                 <template id="tmp1">
+                 <div>
+                     <div class="form-group">
+                         <label>评论内容：</label>
+                         <textarea class="form-control" v-model="content"></textarea>
+                     </div>
+                     <div class="form-group">
+                         <form action="">
+                         <button class="btn btn-primary" @click="postComment">发布内容</button>
+                     </form>
+                     </div>
+                 </div>
+                 
+                 </template>
+            </div>
+            <div style="margin: 0 auto;">
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>...</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>尾页</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="col-12 border" style="height: 169px;">
+                <h6><a href="#">我觉得《赛博朋克2077》不好玩，怎么办？</a></h6>
+                <img style="width: 100%;" src="https://pic3.zhimg.com/80/v2-10d37b79c72f3334c421dfa3b4e8b0a5_400x224.png">
+            </div>
+            <div class="col-12 border" style="height: 169px;">
+                <h6><a href="#">如何评价电视剧《有翡》前八集？</a></h6>
+                <img style="width: 100%;" src="https://pic3.zhimg.com/80/v2-b64e5eff189e97da913385895928f01d_720w.jpg?source=1940ef5c" alt="">
+            </div>
+            <div class="col-12 border" style="height: 169px;">
+                <h6><a href="#">降噪和戴久的舒适度上airpods pro是第一吗？</a></h6>
+                <img style="width: 100%;" src="https://pic1.zhimg.com/80/v2-636bf3eedc65e6caf08bb4bfb63e2138_400x224.jpg?source=1940ef5c">
+            </div>
+            <div class="col-12 border" style="height: 169px;">
+                <h6><a href="#">电动车骑行过斑马线，被汽车撞了轻伤，却被要求赔对方7000修车费，合理吗?</a></h6>
+                <img style="width: 100%;" src="https://pic2.zhimg.com/80/v2-1f5fbab1206b112d1b9a8bdd143a7831_400x224.png">
+            </div>
+            <div class="col-12 border" style="height: 169px;">
+                <h6><a href="#">如果诸葛亮没有六出祁山，而是专心内政猥琐发展，三国可能的发展会是怎样？</a></h6>
+                <img style="width: 100%;" src="https://pic1.zhimg.com/80/v2-a46d97219e928abd37294bd61c310b3f_400x224.jpg?source=1940ef5c">
+            </div>
+            
+
+        </div>
+    </div>
+    
+    </div>
+
+
+</body>
+<script>
+    //  点赞
+    var i=0
+    var a=function(id,j,k){
+        if(i/2==0){
+            document.getElementById(id).src=j;
+            i++;
+        }else{
+            document.getElementById(id).src=k;
+            i--;
+        }
+    }
+
+    // 评论
+var commentBox = {
+    data(){
+        return{
+            user:'',
+            content:''
+        }
+    },
+    template:'#tmp1',
+    methods:{
+        postComment(){//发表评论的方法
+            var comment = { id: Date.now(), user: this.user, content: this.content}
+            //从localStorage获取所有的评论
+            var list = JSON.parse(localStorage.getItem('cmts') || '[]')
+            list.unshift(comment)
+            //重新 保存最新的评论数据
+            localStorage.setItem('cmts',JSON.stringify(list))
+            this.user = this.content = ''
+            this.loadComments()
+            }
+        }
+    }
+var vm = new Vue({
+el:'#app',
+data:{
+    list:[]
+},
+beforeCreate(){
+
+},
+created(){
+    this.loadComments()
+},
+methods:{
+    loadComments(){
+        //从本地的localStorage中，加载评论列表
+        var list = JSON.parse(localStorage.getItem('cmts') || '[]')
+        this.list = list
+    }
+},
+components:{
+    'cmt-box':commentBox
+},
+});
+    
+function toIndex(){
+    self.location="./logined.html"
+
+}
+
+
+</script>
+</html>

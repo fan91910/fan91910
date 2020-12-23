@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文章列表</title>
+    <link rel="stylesheet" href="./libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/iconfont.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <!-- 日历插件的css -->
+    <link rel="stylesheet" href="./libs/jedate/css/jedate.css">
+    <!-- jq -->
+    <script src="./libs/jquery-1.12.4.min.js"></script>
+    <script src="./libs/jedate/js/jedate.js"></script>
+    <script src="./libs/tinymce/tinymce.min.js"></script>
+    <!-- 模板引擎 -->
+    <script src="./libs/template-web.js"></script>
+    <!-- url  js文件 -->
+    <script src="./js/http.js"></script>
+
+    <!-- 因为和前面发表文章页面是一样的 所以可以封装在外面 然后让两个页面引入 -->
+    <script src="./js/common.js"></script>
+    <!-- 页面js文件 -->
+    <script src="./js/article_edit.js"></script>
+
+    <!-- jq -->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="common_title">
+            文章编辑
+        </div>
+        <div class="container-fluid common_con">
+            <form class="form-horizontal article_form" id="form">
+                <div class="form-group">
+                    <label  for="inputTitle" class="col-sm-2 control-label">文章标题：</label>
+                    <div class="col-sm-10">
+                        <input id="tit" type="text" name="title" class="form-control title" id="inputTitle" value="文章标题文字">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputCover" class="col-sm-2 control-label">文章封面：</label>
+                    <div class="col-sm-10">
+                        <img src="" class="article_cover">
+                        <input name="cover" type="file" id="inputCover">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputCategory" class="col-sm-2 control-label">文章类别：</label>
+                    <div class="col-sm-4">
+                        <select class="form-control category" name="categoryId">
+                            <option>类别一</option>
+                            <option>类别二</option>
+                            <option>类别三</option>
+                            <option selected>类别四</option>
+                            <option>类别五</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">发布时间：</label>
+                    <style>
+                        .jeinput {
+                            border: none;
+                            outline: none;
+                            border: 1px solid #ccc;
+                            height: 26px;
+                            width: 380px;
+                        }
+                    </style>
+                    <div class="col-sm-4">
+                        <input type="text" class="jeinput" id="testico" placeholder="YYYY-MM-DD" name='date'>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">文章内容：</label>
+                    <div class="col-sm-10">
+                        <textarea id="mytextarea"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="button" class="btn btn-warning btn-edit" value="修改">
+                        <input type="button" class="btn btn-default btn-draft" value="存为草稿">
+                        <input type="button" class="btn btn-success btn-send" value="发布">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var tit = document.getElementById("tit");
+        var txt = document.getElementById("tinymce");
+        var mytextarea = document.getElementById("mytextarea");
+        $(function(){
+            //  监听输入内容
+            var titVlu;
+            var txtVlu;
+            $(".btn-send").click(function(){
+                titVlu = tit.value;
+                // txtVlu = txt.value;
+                // console.log(txtVlu);
+                sessionStorage.setItem('tit',titVlu);
+                // sessionStorage.setItem('txt',txtVlu);
+                self.location="./logined.html";
+            });
+            
+
+        });
+    </script>
+</body>
+
+</html>

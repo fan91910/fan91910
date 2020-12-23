@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../boot/css/bootstrap.css">
+<script src="./vue.js"></script>
+<script src="./boot/js/jquery.min.js"></script>
+    <script src="./boot/js/popper.min.js"></script>
+    <script src="./boot/js/bootstrap.min.js"></script>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #box{
+        height: 600px;
+        width: 700px;
+        border: 1px solid #000;
+        margin: 0 auto;
+    }
+    .titleTxt{
+        margin-top: 10px;
+        margin-left: 20px;
+    }
+    #title1{
+        margin-left: 20px;
+        height: 50px;
+        width: 550px;
+        background:#eee;
+    }
+    [contenteditable] {
+        padding:4px 16px;
+        background:#eee;
+        margin-left: 20px;
+        width: 660px;
+    }
+</style>
+<title></title>
+</head>
+<body>
+        <div id="app">
+            <div class="session">
+                <input class="form-control" type="text" v-on:keyup.enter="addNew()" v-model="inputValue" placeholder="请发表内容"/>
+                <template id="tmp1"></template>
+                    <span class="form-control" v-for="item in items">{{ item.name }} 
+                        <p id="testid"></p>
+                        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">回复</button>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">回复内容</h4>
+            </div>
+            <div class="modal-body"><input id="t1" class="form-control" v-model="content" placeholder="请发表内容"/></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button onclick="addDiv()" type="button" class="btn btn-primary">提交更改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+                        <!-- 
+                        <p><button onclick="addDiv()">回复</button></p><input id="t1" class="form-control" v-model="content" /> -->
+                    </span>
+            </div>
+            <cmt-box @func="loadComments"></cmt-box>
+    </div>
+
+
+
+
+
+</template>
+
+
+   
+
+<script>
+     
+    function addDiv(){
+        var a=document.getElementById('t1').value
+        $("#testid").append('<div>'+"回复："+a+"</div>");
+    }
+    var storeKey = "studentName";
+            var storage = {
+                fetch:function(){
+                    return JSON.parse(sessionStorage.getItem(storeKey) || "[]")
+                },
+                save:function(items){
+                    console.log("00001");
+                    sessionStorage.setItem(storeKey,JSON.stringify(items));
+                }
+            }
+    var commentBox = {
+        data(){
+            return{
+                user:'',
+                content:''
+            }
+        },
+        template:'#tmp1',
+        methods:{
+            postComment(){//发表评论的方法
+                var comment = { id: Date.now(), user: this.user, content: this.content}
+                //从localStorage获取所有的评论
+                var list = JSON.parse(localStorage.getItem('cmts') || '[]')
+                list.unshift(comment)
+                //重新 保存最新的评论数据
+                localStorage.setItem('cmts',JSON.stringify(list))
+                this.user = this.content = ''
+                this.loadComments()
+            }
+        }
+    }
+var vm = new Vue({
+el:'#app',
+data:{
+    list:[],
+    items:storage.fetch(),
+    inputValue:""
+},
+beforeCreate(){
+
+},
+created(){
+    this.loadComments()
+},
+methods:{
+    loadComments(){
+        //从本地的localStorage中，加载评论列表
+        var list = JSON.parse(localStorage.getItem('cmts') || '[]')
+        this.list = list;
+    },
+    addNew:function(){
+    this.items.push({
+    name:this.inputValue
+    }),
+    this.inputValue = null
+    }
+},
+components:{
+    'cmt-box':commentBox
+},
+watch:{
+    //监听items的变化
+    items:{
+    handler:function(items){
+    storage.save(items);
+    },
+    deep:true
+    }
+}
+});
+</script>
+</body>
+</html>

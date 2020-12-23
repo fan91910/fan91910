@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+    <link rel="stylesheet" href="./boot/css/bootstrap.css">
+    <script src="./boot/js/jquery.min.js"></script>
+    <script src="./boot/js/popper.min.js"></script>
+    <script src="./boot/js/bootstrap.min.js"></script>
+ 
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    /* 第一个类型外面的div */
+    .type{
+        border:red solid 1px;
+        width:300px;
+        height: 800px;
+        display: inline-block;
+        vertical-align:top;
+        margin-right: 50px;
+    }
+    /* 第二部分的最外面div */
+    .zhuer{
+        /* border:aqua solid 1px; */
+        width: 500px;
+        height: 800px;
+        display: inline-block;
+        vertical-align:top;
+    }
+    /* 第三个大div */
+    .zhusan{
+        /* border:black solid 1px; */
+        width: 200px;
+        height: 800px;
+        display: inline-block;
+        margin-left: 50px;
+        vertical-align:top;
+    }
+    /* zhuer下面的搜索外面的框 */
+    #seek{
+        /* border:black solid 1px; */
+        /* width: 500px; */
+        height: 50px;
+        margin-top: 10px;
+        /* A; */
+    }
+    /* seek下面的搜索框 */
+    #search{
+        border:black solid 1px;
+        /* width: 400px; */
+        height: 45px;
+        display: inline-block;
+        vertical-align:top;
+    }
+    /* 轮播图外面的div */
+    #slideshow{
+        /* border: red solid 1px; */
+        margin-top: 20px;
+        height: 400px;
+
+    }
+    /* 轮播图按钮样式 */
+    .carousel-control-prev,
+    .carousel-control-next{
+        width: 4%;
+        height: 20%;
+        background-color: gray;
+        border-radius: 0.25rem;
+        top:40%
+
+    }
+    .carousel-indicators.active{
+        background-color: aqua;
+    }
+    .carousel-indicators li{
+        width: 0.8rem;
+        height: 0.8rem;
+        border-radius: 50%;
+        background-color: black;
+    }
+    /* 帖子 */
+    #invitation{
+        /* border:black solid 1px; */
+        width: 500px;
+        height: 600px;
+        margin-top: 20px;
+    }
+    /* 第3部分下面的登录注册 */
+    #register1{
+        /* border:brown solid 1px; */
+        width: 200px;
+        height: 50px;
+        margin-top: 20px;
+        text-align:center; 
+    }
+    #register2{
+        /* border:brown solid 1px; */
+        width: 200px;
+        height: 50px;
+        /* border: 1px solid #000; */
+    }
+    #register2>img{
+        height: 30px;
+        width: 30px;
+        float: right;
+        margin-right: 8px;
+        margin-top: 8px;
+    }
+    /* #register>button{
+        text-align: center;
+    } */
+    /* 第三部分的个人中心 */
+    #ge{
+        /* border:cornflowerblue solid 1px; */
+        width: 200px;
+        height: 50px;
+        text-align: center;
+        /* line-height:50px; */
+
+    }
+    #ge>a{
+        font-size: 20px;
+        /* margin-top: 20px; */
+        color: black;
+        
+    }
+    /* 第三部分热搜 */
+    #topsearch{
+        width: 200px;
+        /* height: 600px; */
+        margin-top: 10px;
+        border:black solid 1px;
+    }
+    /*  搜索框再调 */
+    #search{
+        margin-left: 14px;
+    }
+    /*
+    
+    */
+    /*  */
+    #di{
+        
+        border:black solid 1px;
+        
+    
+    }
+</style>
+<body>
+<div class="container">
+    <div class="row d-flex justify-content-between " id="zui">
+        <!-- 第一个块类型 -->
+        <div class="col-3" id="di" >
+            <p style="text-align:center">贴吧分类</p>
+            <div class="row" id="di1">
+                <div class="col-12 border">
+                    <div class="di2 row">
+                        <div class="col-12 di3" >
+                        <p>娱乐明星</p>
+                       </div>
+                       <div class="col-12 di4">
+                           <div class="row fen">
+                            <a href="http://www.manmankan.com/dy2013/mingxing/taiwan/" class="col-4">台湾明星</a>
+                            <a href="http://www.manmankan.com/dy2013/mingxing/neidi/" class="col-4">大陆明星</a>
+                            <a href="http://www.manmankan.com/dy2013/mingxing/hanguo/" class="col-4">韩国明星</a>
+                            <a href="http://www.manmankan.com/dy2013/mingxing/oumei/" class="col-4">欧美名星</a>
+                           </div>
+                       </div>
+                    </div>
+                </div>
+                <div class="col-12 border">
+                    <div class="di2 row">
+                        <div class="col-12 di3" >
+                        <p>爱剧人</p>
+                       </div>
+                       <div class="col-12 di4">
+                           <div class="row fen">
+                            <a href="https://tv.2345.com/-neidi--.html" class="col-4">内地电视剧</a>
+                            <a href="https://tv.2345.com/-taiwan--.html" class="col-4">香港电视剧</a>
+                            <a href="https://tv.2345.com/-meiguo--.html" class="col-4">美剧</a>
+                            <a href="https://tv.2345.com/-hanguo--.html" class="col-4">韩剧</a>
+                           </div>
+                       </div>
+                    </div>
+                </div>
+                <div class="col-12 border">
+                    <div class="di2 row">
+                        <div class="col-12 di3" >
+                        <p>热搜</p>
+                       </div>
+                       <div class="col-12 di4">
+                           <div class="row fen">
+                            <a href="" class="col-4">新闻</a>
+                            <a href="" class="col-4">校园</a>
+                            <a href="" class="col-4">生活趣事</a>
+                            <a href="" class="col-4"></a>
+                           </div>
+                       </div>
+                    </div>
+                </div>
+                <div class="col-12 border">
+                    <div class="di2 row">
+                        <div class="col-12 di3" >
+                        <p>体育</p>
+                       </div>
+                       <div class="col-12 di4">
+                           <div class="row fen">
+                            <a href="" class="col-4">足球</a>
+                            <a href="" class="col-4">篮球</a>
+                            <a href="" class="col-4">网球</a>
+                            <a href="" class="col-4">乒乓球</a>
+                            <a href="" class="col-4">健身</a>
+                            <a href="" class="col-4">舞蹈</a>
+                           </div>
+                       </div>
+                    </div>
+                </div>
+                <div class="col-12 border">
+                    <div class="di2 row">
+                        <div class="col-12 di3" >
+                        <p>生活闲趣</p>
+                       </div>
+                       <div class="col-12 di4">
+                           <div class="row fen">
+                            <a href="" class="col-4">摄影</a>
+                            <a href="" class="col-4">画画</a>
+                            <a href="" class="col-4">旅行</a>
+                            <a href="" class="col-4">文玩</a>
+                            <a href="" class="col-4">黑科技</a>
+                            <a href="" class="col-4">生活小妙招</a>
+                           </div>
+                       </div>
+                    </div>
+                </div>
+                <div class="col-12 border">
+                    <div class="di2 row">
+                        <div class="col-12 di3" >
+                        <p>影迷</p>
+                       </div>
+                       <div class="col-12 di4">
+                           <div class="row fen">
+                            <a href="" class="col-4">香港电影</a>
+                            <a href="" class="col-4">内地电影</a>
+                            <a href="" class="col-4">韩国电影</a>
+                            <a href="" class="col-4">美国电影</a>
+                            <a href="" class="col-4">日本电影</a>
+                           </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="zhuer row">
+
+        <div class="col-12" id="sousuo">
+            <div class="row" id="sousuo1">
+                <input type="text" id="search" class="col-10">
+                <button type="button" class=" btn btn-default">搜索</button>
+            </div>
+        </div>
+       <!-- ----------------------------- -->
+       <div id="slideshow" class="col-12">
+           <h6>轮播图</h6>
+           <div id="lunbotu" class="carousel"data-ride="carousel">
+               <!-- 轮播图片 -->
+             <div class="carousel-inner">
+               <div class="carousel-item active">
+                   <img src="./img/1.jpg" alt="" style="width: 500px; height: 300px;" onclick="toOne">
+               </div>
+               <div class="carousel-item ">
+                <img src="./img/2.jpg" alt="" style="width: 500px; height: 300px;">
+            </div>
+            <div class="carousel-item">
+                <img src="./img/3.jpg" alt="" style="width: 500px; height: 300px;">
+            </div>
+            </div>
+            <!-- 2左右按钮 -->
+            <a  data-slide='prev' href="#lunbotu" class="carousel-control-prev">
+                <span class="carousel-contorl-prev-icon"></span>
+            </a>
+            <a  data-slide='next' href="#lunbotu" class="carousel-control-next">
+                <span class="carousel-contorl-next-icon"></span>
+            </a>
+            <!-- 指示器 -->
+            <ul class="carousel-indicators">
+                <li data-slide-to='0'data-target='#lunbotu' class="active"></li>
+                <li data-slide-to='1'data-target='#lunbotu' class="active"></li>
+                <li data-slide-to='3'data-target='#lunbotu' class="active"></li>
+            </ul>
+           </div>
+        </div>
+        <!-- ----------------------------------------- -->
+        <div id="invitation" >
+            <div>
+               <h5><a href="./otherPage.html">赛博朋客2077发布,首日拿下steam销量榜首</a></h5>
+               <p>《赛博朋克2077》剧情发生在腐败和高科技并存的2077年未来世界，玩家将可以在游戏中体验到细腻的未来夜城景色以及多线剧情...</p>
+               <a href="./otherPage.html"><img style="width: 50%;" src="./img/赛博.jpg"></a>
+            </div>
+            <br>
+            <div>
+               <h5><a href="https://tieba.baidu.com/p/7094490544">老WE队员成立战队</a></h5>
+               <p>贴吧的朋友们大家好。我是若风。 我快三十岁了，一直觉得自己之前的人生过的很充实，但我也一直有三个遗憾，一是：没能成为一个作家。二是：还没有一个女儿。三也就是我心里最大的遗憾就是：未能...</p>
+               <a href="./otherPage.html"><img style="width: 50%;" src="./img/若风.jpg"></a>
+            </div>
+        
+       
+    
+    </div>
+
+
+       <!-- ---------------------------- -->
+    </div>
+    <!-- 登录注册 -->
+
+    <div class="zhusan">
+        <div id="register" style="text-align:center">
+            <button type="button" class="btn btn-default btn-sm" ><a href="./login.html">登录</a> </button>
+            <button type="button" class="btn btn-default btn-sm" ><a href="./reg.html">注册</a> </button>
+        </div>
+        <div>
+            <br>
+        </div>
+        <div id="topsearch">
+            <div class="col-12" id="rebang">
+                <p style="text-align: center;">热榜</p>
+                <div class="row re1">
+                    <p><span>1</span><a href="">洪欣否认与张丹峰离婚</a></p>
+                    <p><span>2</span><a href="">大连新增4例本土无症状</a></p>
+                    <p><span>3</span><a href="">丁真 以前就放牛骑马现在要干活 </a></p>
+                    <p><span>4</span><a href="">官方通告！腾讯微博将于9月28日停止服务和运营</a></p>
+                    <p><span>5</span><a href="">石家庄警方通报“网友质疑查酒驾放人”:涉嫌醉驾者依法处理</a></p>
+                    <p><span>6</span><a href="">进口冷链食品 预防性全面消毒工作方案</a></p>
+                    <p><span>7</span><a href="">河南9岁孤女成老赖 法院:我们错了</a></p>
+                    <p><span>8</span><a href="">济南流调显示确诊飞行员未接触乘客</a></p>
+                    <p><span>9</span><a href="">澳总理:支持中国大力发展经济</a></p>
+                    <p><span>10</span><a href="">巴西总统博索纳罗祝贺拜登胜选</a></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

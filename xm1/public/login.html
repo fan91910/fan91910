@@ -1,0 +1,121 @@
+<!doctype html> 
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="Generator" content="EditPlus®"> 
+  <meta name="Author" content=""> 
+  <meta name="Keywords" content=""> 
+  <meta name="Description" content=""> 
+  <title>登录</title> 
+  <!-- <script src="./js/jquery.min.js"></script> -->
+  <style type="text/css"> 
+ *{
+    margin: 0px;
+    padding: 0px; 
+}
+body{
+    background-color: #f4f4f4;
+}
+.regbox{
+          width: 400px;
+          height: 400px;
+          /* border: 2px solid red; */
+          position: absolute;
+          margin-left: auto;
+          margin-right: auto;
+          border-radius: 10px;
+          color: #000000;
+          font-family: "微软雅黑";
+          font-size: 26px;
+          text-align: center;
+          margin-left: 500px;
+          margin-top: 100px;
+          /* background: #DDD; */
+        }
+        
+        .regbox div{
+          margin-bottom: 30px;
+        }
+        .regbox input{
+        height: 30px;
+        background-color: rgba(255,255,255, 0.5) ;
+        border: none;
+        border-radius: 4px;
+        
+        }
+        #login{
+        width: 100px;
+        height: 40px;
+        margin: 0 auto;
+        /* background-color:#5cb85c; */
+        border-radius: 6px;
+        margin-bottom: 20px;
+        font-size: 24px;
+        line-height: 40px;
+        
+        }
+        
+        span{
+          font-size: 16px;
+        }
+        input::-webkit-input-placeholder { /* WebKit browsers */ 
+          color: rgb(156, 154, 154); 
+        } 
+        input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
+        color: rgb(156, 154, 154); 
+        ; 
+        } 
+        input::-moz-placeholder { /* Mozilla Firefox 19+ */ 
+        color:  rgb(156, 154, 154); 
+        ; 
+        }
+        input:-ms-input-placeholder { /* Internet Explorer 10+ */ 
+        color: rgb(156, 154, 154); 
+        } 
+  </style> 
+</head>
+<body>
+  
+<div class="regbox" class="container">
+  <h2>欢迎您的到来</h2>
+  <div> 账号： <input type="text" name="uname" id="uname" placeholder="用户名"><span style="color: red;">*</span> </div>
+  <div> 密码： <input type="text" name="upwd" id="upwd" placeholder="请输入密码"><span style="color: red;">*</span> </div>
+  <div> <a style="color: rgb(100, 100, 100); font-size: 16px; text-decoration: none;"  href="./reg.html">注册一个新的账号</a> </div>
+  <div id="login" onclick="javascript:tologin()">登录</div>
+</div>
+<script type="text/javascript" src="test.js" opacity= 0.7></script>
+<script src="./ajax.js"></script>
+<script>
+var uname= document.getElementById('uname');
+var upwd = document.getElementById('upwd');
+function tologin(){
+  console.log(uname.value,upwd.value)
+  var obj={
+    type:'post',
+    url:'http://localhost',
+    port:':8080',
+    path:'/login',
+    data:{
+      uname:uname.value,
+      upwd:upwd.value
+    },
+    success:function(data){
+    //   console.log(uname.value);
+      if(data=='1'){
+        sessionStorage.setItem("username",uname.value);
+        self.location='./logined.html'
+      }else{
+        alert('账号或密码错误');
+      }
+    },
+    error:function(err){
+    //   console.log(err);
+    }
+  }
+  ajax(obj)
+}
+
+
+</script>
+</body>
+</html>
